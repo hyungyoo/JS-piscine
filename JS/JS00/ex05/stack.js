@@ -11,7 +11,7 @@ export const stackCreate = () => ({
  * @returns 
  */
 export function stackEmpty(stack) {
-    return stack.arr.length ? true : false;    
+    return stack.arr.length === 0 ? true : false;    
 }
 /**
  * push data in stack
@@ -31,7 +31,7 @@ export function stackPush(stack, data) {
  * @returns last value
  */
 export function stackPeek(stack) {
-    if (!stackEmpty(stack))
+    if (stackEmpty(stack))
         return;
     return stack.arr[stack.arr.length - 1];
 }
@@ -42,7 +42,7 @@ export function stackPeek(stack) {
  * @returns protection for error (if there is not elements in stack)
  */
 export function stackPop(stack) {
-    if (!stackEmpty(stack))
+    if (stackEmpty(stack))
         return;
     stack.arr.splice(stack.arr.length - 1);
 }

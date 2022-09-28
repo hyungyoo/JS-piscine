@@ -1,4 +1,4 @@
-import { stackCreate, stackPush, stackPeek, stackPop } from "./stack.js";
+import { stackCreate, stackPush, stackPeek, stackPop, stackEmpty } from "./stack.js";
 
 const arr = stackCreate();
 
