@@ -14,49 +14,37 @@ async function spaghetti (etape, temps) {
             throw (`${etape} 실패`);
             spaghetti(etape, temps);
         };
-        console.log(`${etape} 성공`);
         return (etape);
-};
-
-async function doA() {
+    };
+    
+    
+async function doJob(etape, time) {
     while (42) {
         try {
-            await spaghetti('A : 면삶기', 3000);
-            return 'A 끝';
+            await spaghetti(etape, time);
+            return `${etape} 성공`;
         } catch (e) {
             console.log(e);
         }
     };
 }
 
-// 잘못짰음
-// b2에서 실패하면, b1으로 돌아감
-// try catch를 하나하나의 단계에 넣어줘야함
-// 그냥 doA를 반복해서 작업하는게 좋았음.
-// 다음부터는 미리 생각해야겠다 
+async function doA() {
+    await doJob('A : 면삶기', 3000).then(console.log);
+    return 'A 끝';
+}
+
 async function doB() {
-    while (42) {
-        try {
-            await spaghetti('B - 1 : 브로콜리 대치기', 1000);
-            await spaghetti('B - 2 :마늘과 양파 볶기', 2000);
-            await spaghetti('B - 3 : 베이컨과 햄 볶기', 2000);
-            await spaghetti('B - 4 :소스 남은야채넣고 다같이 볶기');
-            return 'B 끝';
-        } catch (e) {
-            console.log(e);
-        }
-    }
+    await doJob('B - 1 : 브로콜리 대치기', 1000).then(console.log);
+    await doJob('B - 2 : 마늘과 양파 볶기', 2000).then(console.log);
+    await doJob('B - 3 : 베이컨과 햄 볶기', 2000).then(console.log);
+    await doJob('B - 4 :소스 남은야채넣고 다같이 볶기', 3000).then(console.log);
+    return 'B 끝';
 };
 
 async function doC () {
-    while (42) {
-        try {
-            await spaghetti('C : 면까지 넣고 다 같이 볶기', 3000);
-            return 'C 끝';
-        } catch (e) {
-            console.log(e);
-        }
-    }
+    await doJob('C : 면까지 넣고 다 같이 볶기', 3000).then(console.log);
+    return 'C 끝';
 }
 
 async function makeSpaghetti() {
