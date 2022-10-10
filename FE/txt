@@ -1,0 +1,85 @@
+// state가 변화하면 모두가 다시 리렌더링이 된다.
+// use Effect를 사용하면, 처음 렌더링에서만 실행됨
+// 그러나 디팬던시에 추가를해주면, js가 state의 변화를 시켜보고
+// 변화가일어났을경우, 함수를 다시 실행한다.
+// 디펜더시가 비어있으면, 지켜볼수있는게없기떄문에 한번만 렌더된다.
+// 맵을 사용하면 리액트는 고유한값을가진 key를 필요로한다.
+// 없다면 index를 만들어서 부여해도된다.
+// fetch, json은 비동기함수!
+// fetch 결과값은 response
+// json메소드를쓰면 오브젝트리스트
+// router
+// <Router> <Switch> <Route path='/'>
+// npm i react-router-dom@5.3.0
+
+// fetch("https://api.coinpaprika.com/v1/tickers?limit=10")
+
+// https://velog.io/@yoosk5485/react-router-link%ED%81%B4%EB%A6%AD-%EC%8B%9C-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8-%EB%B0%9C%EC%83%9D%EC%95%88%EB%90%A8
+// link 연결시, url은 바뀌지만, 페이지가 바뀌지않는
+// use.strictMode 지우
+
+
+// useParams();
+// 각 정보들을 하나씩 id값에따라 페이지를 만들어주고싶다면!
+// <Link to={`/movie/${id}`}> 처럼 해준다.
+// 컴포넌트에서 하나씩 띄워줄때 주는것이기때문에, 그 id값은 이미 받은것이고
+// 타이틀에서 자세한정보로 가는링크를 주는때에는 key값을 주면된다.
+
+
+// 그렇다면, Link to 로 받은 정보는, url에 찍히게되고
+// 라우터는 그 url을 기반으로 정보를 찾는다
+// 스위치에서 라우터에 정확한주소를 줄때에는
+// exact path를 주면된다
+// path에 아무것도 안하면, defalut error page가 된다
+
+// /movie/:id 를 한다면, 우선 그쪽으로 가게된다.
+// id를 알고싶다고 알리는것!
+// 받는건 useParams
+// 그렇다면, id는 어떻게 알수있을까? (그 페이지에서!)
+// 그건 그 페이지가 열릴떄! useParams를 쓰면된다.
+// 
+
+
+어느페이지에서 link to를 받으면, 그것을 라우터에서 찾는다.
+/a/2라면
+라우터쪽에서는 /a/:A 를매칭 
+여기 A부분이 2로 변경된다.
+밑에있는 컴포넌트에 useParams 함수를 통해서 받을수있다.
+그것을 기준으로 정보들을 내보내면된다
+
+
+// form 태그로감싸져있으며, 버튼을 누르면,
+자동으로 새로고침을 한다.
+그것을 막기위해서는
+form 태그에 onSubmit을 만들고, 함수를 이벤트에 넣어서
+
+https://programming119.tistory.com/100
+
+function onSubmit(e) {
+    e.preventDefault();
+}
+
+를 해주게되면, 자동으로 새로고침을 막는다.
+
+
+
+
+
+
+
+//useRef() 란
+보통 state를 쓰면, 재랜더링이됨
+그렇기떄문에, 일반변수는 초기화가된다.
+그것을 방지하기위해서, useRef를 사용한다.
+
+어떠한 input요소의 값을 받고싶다면, onChange를 써서
+ref의 값을 변동시켜줘도되지만, useRef().current
+그냥, 
+exempleRef = useRef();
+ref={exempleRef}
+로 하면, focus가 맞춰진다.
+exempleRef.current.value를 하면 값을 가져옴
+
+
+// useHistory()
+안에 url을 넣어주면, 그곳으로 이동시켜준다!
