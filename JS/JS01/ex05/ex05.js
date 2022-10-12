@@ -21,7 +21,7 @@ class controlMessage {
     this._message = message;
   }
 
-/**
+ /**
  * target.id에 따라서, 각 역활 수행
  * @param {*} target 외부로부터 가져온 event.target
  */
@@ -34,9 +34,9 @@ class controlMessage {
         this.executeUpdate();  
     }
 
-}
+  }
 
-executeUpdate() {
+  executeUpdate() {
     const txt = this.target.textContent;
     if (txt === 'done') {
         this.target.parentNode.classList.toggle('checked');
@@ -133,7 +133,6 @@ executeUpdate() {
 
 const msg = new controlMessage();
 
-
 "keyup mouseup mouseover".split(" ").forEach(type => {
     document.getElementById('mainPage').addEventListener(type, event=> {
         const target = event.target;
@@ -143,45 +142,5 @@ const msg = new controlMessage();
             msg.controlEvent(target);
         }
     })
+
 });
-
-// window.localStorage.setItem('1', '2');
-// window.localStorage.setItem('5', '2');
-// window.localStorage.setItem('6', '2');
-
-// localStorage.clear();
-
-// for (let i = 0; i < localStorage.length; i++) {
-// console.log( localStorage.getItem(localStorage.key(i)) );
-// }
-
-
-// const ulNode = document.getElementById('toDoList');
-// "keyup mouseup".split(" ").forEach(type => {
-//     document.getElementById('toDo').addEventListener(type, event => {
-//         const target = event.target;
-//         if (target.id === 'addToDo') {
-//             if (toDoArray.msg === undefined)
-//                 return ;
-//        } else if (target.id === 'input'){
-//             // console.log(target.value)
-//             toDoArray.msg = target.value;
-//         }
-//     })
-// })
-
-// id 주는법은 setAttribute
-// https://www.educative.io/answers/how-to-add-an-id-to-element-in-javascript
-
-
-// 노드에 저장을하는게아니라, localstorage에 저장을하고!
-// 출력할때는 노드들을 싹 지우고, for로 순회하면서 하나하나가져와서 새롭게 노드에 넣어야한다.
-// 업데이트키 프롬프트로, 그리고 삭제키 confirm키로 만들기
-
-
-// const newMsg = prompt('haha');
-// console.log(newMsg)
-
-
-// const confir = confirm('real?');
-// console.log(confir);
